@@ -32,39 +32,35 @@
             $this->view->render('moderator_view.php',false, $data);
         }
 
-
-
-
-
-
-
-
-
-        function action_index(){
-            $data = $this->model->get_data();
-            $this->view->render("moderator_view.php", "template_view.php", $data);
+        public function approve($rvwID){
+            switch($this->model->approve($rvwID)){
+                case '1':
+                case '0':
+                    header('Location: '.URL.'/Moderator');
+                    break;
+                case '-1':
+                    header('Location: '.URL.'/Login');
+                    break;
+                default:
+                    header('Location: '.URL.'/Moderator');
+            }
         }
 
-        function action_orderByName(){
-
-            //static $desc = 0; //BACK AND FOURTH?
-
-            $data = $this->model->get_data("ORDER BY rvwName, isApproved, rvwDate DESC, rvwTime DESC");
-            $this->view->render("moderator_view.php", 'template_view.php', $data);
+        public function dismiss($rvwID){
+            switch($this->model->dismiss($rvwID)){
+                case '1':
+                case '0':
+                    header('Location: '.URL.'/Moderator');
+                    break;
+                case '-1':
+                    header('Location: '.URL.'/Login');
+                    break;
+                default:
+                    header('Location: '.URL.'/Moderator');
+            }
         }
 
-        function action_orderByEmail(){
-            $data = $this->model->get_data("ORDER BY rvwEmail, isApproved, rvwDate DESC, rvwTime DESC");
-            $this->view->render("moderator_view.php", 'template_view.php', $data);
-        }
+        public function edit($rvwID){
 
-        function action_orderByDate(){
-            $data = $this->model->get_data("ORDER BY rvwDate, rvwTime, isApproved");
-            $this->view->render("moderator_view.php", 'template_view.php', $data);
-        }
-
-        function action_orderByStatus(){
-            $data = $this->model->get_data();
-            $this->view->render("moderator_view.php", 'template_view.php', $data);
         }
     }

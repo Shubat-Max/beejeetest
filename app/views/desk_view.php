@@ -1,16 +1,6 @@
 <?php
 $name_post = $email_post = $text_post = $imgSrc_post = "";
 
-/*echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";*/
-
-/*
- * $loc = $_SERVER['HTTP_REFERER'].'404';
- * header("Location: $loc");
- * exit();
- */
-
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     if( !isset($_POST['inName']) ){
@@ -48,9 +38,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $sql = "INSERT INTO reviews (rvwName, rvwEmail, rvwText, rvwDate, rvwTime)
                 VALUES ('$name_post','$email_post','$text_post', '$current_date', '$current_time')";
 
-        //$sql = "INSERT INTO reviews (rvwName, rvwEmail, rvwText, rvwDate, rvwTime)
-        //        VALUE ('$name_post', '$email_post', '$text_post', '$current_date', '$current_time'";
-
         if($link->query($sql) !== TRUE){
             $flag = false;
             echo "ERROR: ". $sql . " | " . $link->error;
@@ -59,12 +46,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         }
         disconnect_db($link);
 
-        /*
-        $loc = $_SERVER['HTTP_REFERER'].$_SERVER['PHP_SELF'];
-        $loc = $_SERVER['HTTP_REFERER'].'404';
-        header("Location: $loc");
-        exit();
-        */
         unset($name_post);
         unset($email_post);
         unset($text_post);

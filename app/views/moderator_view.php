@@ -56,19 +56,18 @@
                             }
                             ?>
 
-
                         <center>
                             <div class="col-lg-1 center-block">
                                 <div class="btn-group-vertical btn-group-xs " role="group" aria-label="Control Panel">
-                                    <button type="button" class="btn btn-default" aria-label="Approve" title="Approve">
+                                    <a href="<?=URL?>/Moderator/approve/<?=$id?>" class="btn btn-default" aria-label="Approve" title="Approve">
                                         <span class="glyphicon glyphicon-ok-sign"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default" aria-label="Edit" title="Edit">
+                                    </a>
+                                    <a href="<?=URL?>/Moderator/edit/<?=$id?>" class="btn btn-default" aria-label="Edit" title="Edit">
                                         <span class="glyphicon glyphicon-edit"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-default" aria-label="Dismiss" title="Dismiss">
+                                    </a>
+                                    <a href="<?=URL?>/Moderator/dismiss/<?=$id?>" class="btn btn-default" aria-label="Dismiss" title="Dismiss">
                                         <span class="glyphicon glyphicon-remove-sign"></span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </center>
