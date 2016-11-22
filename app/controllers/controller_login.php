@@ -9,6 +9,12 @@
         }
 
         public function run(){
-            //$this->model->run();
+            if($this->model->run() == 0){
+                $this->view->render('login_view.php');
+            }
+        }
+
+        public function logout(){
+            $this->model->logout();
         }
     }

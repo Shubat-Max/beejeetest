@@ -1,10 +1,7 @@
 <?php
-    class Database {
-        public function __construct($_HOST, $_NAME, $_USER, $_PASSWORD){
-            return $link = '';
+    class Database extends mysqli {
+        public function __construct(){
+            parent::__construct(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         }
 
-        public function destroy(){
-
-        }
     }

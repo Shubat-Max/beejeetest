@@ -178,14 +178,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <!-- REVIEW OUTPUT MODULE - BEGIN -->
         <?php
         if($data->num_rows > 0){
-        while($row = $data->fetch_assoc()){
-            $name = $row['rvwName'];
-            $email = $row['rvwEmail'];
-            $text = $row['rvwText'];
-            $imgSrc = $row['rvwImgSrc'];
-            $date = $row['rvwDate'];
-            $time = $row['rvwTime'];
-            $isMaintained = $row['isMaintained'];
+            while($row = $data->fetch_assoc()){
+                $name = $row['rvwName'];
+                $email = $row['rvwEmail'];
+                $text = $row['rvwText'];
+                $imgSrc = $row['rvwImgSrc'];
+                $date = $row['rvwDate'];
+                $time = $row['rvwTime'];
+                $isMaintained = $row['isMaintained'];
         ?>
         <div class="row table-bordered">
             <div class="col-lg-12">
@@ -217,7 +217,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             </div>
         </div>
         <?php
-        }
+            }
         }else{
             echo "<h3>0 results</h3>";
         }

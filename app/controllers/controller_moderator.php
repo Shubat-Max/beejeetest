@@ -2,11 +2,17 @@
     class Controller_Moderator extends Controller {
         function __construct(){
             parent::__construct();
+            if($_SESSION['loggedIn'] == false){
+                Session::destroy();
+                header("Location: ".URL."/Login");
+                exit();
+            }
         }
 
         public function index(){
             $data = $this->model->get_data();
             $this->view->render('moderator_view.php',false, $data);
+
         }
 
         function orderBy($order){

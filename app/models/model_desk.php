@@ -15,14 +15,6 @@
                     WHERE isApproved = 2
                     $order";
 
-            /*
-             *
-             * ORDER BY rvwName DESC";
-             * ORDER BY rvwEmail DESC";
-             * ORDER BY rvwDate DESC";
-             *
-             */
-
             $result = $link->query($sql);
 
             disconnect_db($link);
