@@ -5,6 +5,6 @@
         }
 
         public function index(){
-            $this->view->render('404_view.php');
+            $this->view->render('404_view.php', true, true);
         }
     }

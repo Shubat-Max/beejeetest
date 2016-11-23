@@ -26,9 +26,9 @@
                                 <a class="btn btn-default col-lg-5" href="..">Back</a>
                             </div>
                         </div>
+                    </div>
                 </div>
             </form>
         </div>
-
     </div>
 </div>
