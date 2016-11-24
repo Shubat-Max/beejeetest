@@ -15,13 +15,15 @@
         }
 
         function transmit($name, $email, $text, $imgSrc = NULL){
-                $current_date = date('Y-m-d');
-                $current_time = date('h:i:s');
+            $current_date = date('Y-m-d');
+            $current_time = date('h:i:s');
 
-                $sql = "INSERT INTO reviews (rvwName, rvwEmail, rvwText, rvwImgSrc, rvwDate, rvwTime)
+            $sql = "INSERT INTO reviews (rvwName, rvwEmail, rvwText, rvwImgSrc, rvwDate, rvwTime)
                         VALUES ('$name','$email','$text', '$imgSrc', '$current_date', '$current_time')";
 
-                $this->db->query($sql);
+            $this->db->query($sql);
+
+            $this->db->close();
         }
 
         function test_input($data) {

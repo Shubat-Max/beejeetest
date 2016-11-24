@@ -31,6 +31,8 @@
             Controller_Desk::index($data);
         }
 
+
+
         function transmission(){
             if($_SERVER['REQUEST_METHOD'] == "POST"){
                 if( !isset($_POST['inName']) ){
@@ -60,13 +62,74 @@
                     }
                 }
 
-                //ADD IMAGE CHECKING HERE!!!
+                //Image upload processing
+                if(!empty($_FILES["inImage"]["name"])){
+                    //Generate unique name for the file
+                    $temp = explode(".", $_FILES["inImage"]["name"]);
+                    $newfilename = round(microtime(true)) . '.' . end($temp);
+                    $save = "img/upload/".$newfilename;
+
+                    //Check if actually an image
+                    $check = getimagesize($_FILES["inImage"]["tmp_name"]);
+                    if($check === false) {
+                        $img_error = "Not an image.";
+                    }
+
+                    //Check if size of the image larger than 500Kb - should be enough
+                    if ($_FILES["inImage"]["size"] > 5000000) {
+                        $img_error = "File is too large";
+                    }
+
+                    //Extension check
+                    $imageFileType = pathinfo($_FILES["inImage"]["name"], PATHINFO_EXTENSION);
+                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" ) {
+                        $img_error = "Only JPG, PNG & GIF files are allowed.";
+                    }
+
+                    if (true) {
+                        $fn = $_FILES['inImage']['tmp_name'];
+                        $size = getimagesize($fn);
+                        $ratio = $size[0]/$size[1]; // width/height
+                        if( $ratio > 1) {
+                            $width = 320;
+                            $height = 240/$ratio;
+                        }
+                        else {
+                            $width = 320*$ratio;
+                            $height = 240;
+                        }
+                        $src = imagecreatefromstring(file_get_contents($fn));
+                        $dst = imagecreatetruecolor($width,$height);
+                        imagecopyresampled($dst,$src,0,0,0,0,$width,$height,$size[0],$size[1]);
+                        imagedestroy($src);
+                        imagepng($dst, $save); // adjust format as needed
+                        imagedestroy($dst);
+                    }
+                }else{
+                    $img_error = NULL;
+                }
+
+                $path = explode('/', $_SERVER['REQUEST_URI']);
+                if(empty($path[1])){
+                    $path[1] = "Desk";
+                }
 
                 if(!isset($name_error) && !isset($email_error) && !isset($text_error)){
-                    echo $this->model->transmit($_POST['inName'],$_POST['inEmail'],$_POST['inReview']);
-                    unset($_POST);
-                    header("Location:".URL."/");
+                    if(!empty($_FILES["inImage"]["name"])){
+                        if(!isset($img_error)){
+                            $this->model->transmit($_POST['inName'],$_POST['inEmail'],$_POST['inReview'],$save);
+                            $this->view->flag = true;
+                            unset($_POST);
+                        }
+                    }else{
+                        $this->model->transmit($_POST['inName'],$_POST['inEmail'],$_POST['inReview']);
+                        $this->view->flag = true;
+                        unset($_POST);
+                    }
+                }else{
+                    $this->view->flag = false;
                 }
+                header("Location:".URL."/".$path[1]);
             }
         }
     }

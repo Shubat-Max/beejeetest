@@ -29,10 +29,13 @@ $url[0]/$url[1]/$url[2]
             if(file_exists($file)){
                 require $file;
             }else{
+                header("Location:".URL."/404");
+                /*
                 require 'app/controllers/controller_404.php';
                 $controller = new Controller_404();
-                $controller->view->render('404_view.php');
+                $controller->view->render('404_view.php', true, true);
                 return false;
+                */
             }
 
             $ctrl_name = 'Controller_'.$url[0];

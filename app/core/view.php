@@ -9,8 +9,8 @@
                 require 'app/views/header_view.php';
             }
             if(is_array($content)){
-                foreach($content as $page){
-                    require 'app/views/'.$page;
+                foreach($content as $module){
+                    require 'app/views/'.$module;
                 }
             }else{
                 require 'app/views/'.$content;

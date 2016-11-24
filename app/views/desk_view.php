@@ -26,7 +26,7 @@
                 <div class="row">
                     <?php
                         if(!is_null($imgSrc) && !empty($imgSrc)){
-                            echo "<div class='col-lg-4'><img src='$imgSrc'></div>";
+                            echo "<div class='col-lg-4'><img src='/$imgSrc'></div>";
                             echo "<div class='col-lg-offset-1 col-lg-6 text-justify'>$text</div>";
                         }else{
                             echo "<div class=' col-lg-11 text-justify'>$text</div>";

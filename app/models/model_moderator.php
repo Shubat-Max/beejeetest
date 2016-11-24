@@ -55,9 +55,4 @@
                 return -1; //Unauthorized access denied
             }
         }
-
-        //Moderator/edit/1
-        public function edit($rvwID){
-
-        }
     }

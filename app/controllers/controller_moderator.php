@@ -64,8 +64,4 @@
                     header('Location: '.URL.'/Moderator');
             }
         }
-
-        public function edit($rvwID){
-
-        }
     }

@@ -46,7 +46,7 @@
                             <a href="<?=URL?>/Moderator/approve/<?=$id?>" class="btn btn-default" aria-label="Approve" title="Approve">
                                 <span class="glyphicon glyphicon-ok-sign"></span>
                             </a>
-                            <a href="<?=URL?>/Moderator/edit/<?=$id?>" class="btn btn-default" aria-label="Edit" title="Edit">
+                            <a href="<?=URL?>/Editor/edit/<?=$id?>" class="btn btn-default" aria-label="Edit" title="Edit">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
                             <a href="<?=URL?>/Moderator/dismiss/<?=$id?>" class="btn btn-default" aria-label="Dismiss" title="Dismiss">
